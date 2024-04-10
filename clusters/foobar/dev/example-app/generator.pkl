@@ -1,10 +1,28 @@
 import "../../../../generators/bases/DefaultGenerator.pkl"
+import "@k8s/api/networking/v1/Ingress.pkl"
+
+local defaultIngress = DefaultGenerator.generate(
+  import("../../../../generators/apps/example/ingress.pkl"),
+  import("../tenants.pkl")
+)
+
+local adjustedIngress: Listing = new Listing {
+  for (v in defaultIngress.value as Listing<Ingress>) {
+    (v) {
+      metadata {
+        annotations {
+          ["foo"] = "bar"
+        }
+      }
+    }
+  }
+}
 
 output {
   files {
-    ["generated/ingress.yaml"] = DefaultGenerator.generate(
-      import("../../../../generators/apps/example/ingress.pkl"),
-      import("../tenants.pkl")
-    )
+    ["generated/ingress.yaml"] {
+      value = adjustedIngress
+      renderer = defaultIngress.renderer
+    }
   }
 }

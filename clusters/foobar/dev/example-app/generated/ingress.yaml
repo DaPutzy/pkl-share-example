@@ -1,8 +1,3 @@
-####################################################################################
-# ⚠️ THIS IS A GENERATED FILE ⚠️
-# DO NOT MAKE MANUAL CHANGES
-####################################################################################
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -11,6 +6,7 @@ metadata:
     ingress.kubernetes.io/ssl-redirect: 'true'
     nginx.ingress.kubernetes.io/app-root: /ui/
     nginx.ingress.kubernetes.io/rewrite-target: /$1
+    foo: bar
   labels:
     app.kubernetes.io/name: example
     app.kubernetes.io/instance: example
@@ -47,6 +43,7 @@ metadata:
     ingress.kubernetes.io/ssl-redirect: 'true'
     nginx.ingress.kubernetes.io/app-root: /ui/
     nginx.ingress.kubernetes.io/rewrite-target: /$1
+    foo: bar
   labels:
     app.kubernetes.io/name: example
     app.kubernetes.io/instance: example
