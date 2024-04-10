@@ -1,0 +1,10 @@
+import "../../../../generators/bases/DefaultGenerator.pkl"
+
+output {
+  files {
+    ["generated/ingress.yaml"] = DefaultGenerator.generate(
+      import("../../../../generators/apps/example/ingress.pkl"),
+      import("../tenants.pkl")
+    )
+  }
+}

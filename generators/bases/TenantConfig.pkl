@@ -1,0 +1,3 @@
+import "TenantConfigItem.pkl"
+
+tenants: Listing<TenantConfigItem>(length > 1) = new Listing<TenantConfigItem> {}

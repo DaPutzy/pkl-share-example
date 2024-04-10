@@ -1,0 +1,5 @@
+import "TenantConfigItem.pkl"
+
+tenants: Listing<TenantConfigItem> = new Listing<TenantConfigItem> {}
+
+configs = null

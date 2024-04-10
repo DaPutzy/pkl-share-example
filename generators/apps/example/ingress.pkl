@@ -1,0 +1,87 @@
+amends "../../bases/BaseTemplate.pkl"
+
+import "@k8s/K8sResource.pkl"
+import "@k8s/apimachinery/pkg/apis/meta/v1/ObjectMeta.pkl"
+import "@k8s/api/networking/v1/Ingress.pkl"
+
+tenants {}
+
+local metadataDefaults: ObjectMeta = new {
+  annotations {
+    ["kubernetes.io/tls-acme"] = "true"
+    ["ingress.kubernetes.io/ssl-redirect"] = "true"
+    ["nginx.ingress.kubernetes.io/app-root"] = "/ui/"
+    ["nginx.ingress.kubernetes.io/rewrite-target"] = "/$1"
+  }
+  labels {
+    ["app.kubernetes.io/name"] = "example"
+    ["app.kubernetes.io/instance"] = "example"
+  }
+}
+
+local httpTemplateDefault: Ingress.HTTPIngressRuleValue = new {
+  paths {
+    new {
+      backend {
+        service {
+          name = "example-backend"
+          port {
+            name = "http-backend"
+          }
+        }
+      }
+      path = "/rest/?(.*)"
+      pathType = "Prefix"
+    }
+    new {
+      backend {
+        service {
+          name = "example-ui"
+          port {
+            name = "http-ui"
+          }
+        }
+      }
+      path = "/ui/?(.*)"
+      pathType = "Prefix"
+    }
+  }
+}
+
+configs = new Listing {
+  for (tenant in tenants) {
+    when (tenant.example != null) {
+      new Ingress {
+        metadata = (metadataDefaults) {
+          name = "example-" + tenant.name
+          annotations {
+            ["kubernetes.io/tls-acme"] = if (tenant.example.useAcme()) "true" else "false"
+          }
+        }
+        spec {
+          rules {
+            new {
+              host = tenant.example.domain
+              http = httpTemplateDefault
+            }
+          }
+          tls {
+            new {
+              hosts {
+                tenant.example.domain
+              }
+              secretName = tenant.example.getCertOrDefault("example-" + tenant.name + "-tls-secret")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+output {
+  value = configs
+  renderer = (K8sResource.output.renderer as YamlRenderer) {
+    isStream = true
+  }
+}
