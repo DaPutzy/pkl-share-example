@@ -1,30 +1,24 @@
 amends "../tenants.pkl"
 
-local ingress: ModuleOutput = (import("../../../../generators/apps/example/ingress.pkl")) {
-  tenants = module.tenants
-}.output
-
-local frontend: ModuleOutput = (import("../../../../generators/apps/example/frontend.pkl")) {
-  tenants = module.tenants
-}.output
-
 output {
   files {
-    ["generated/ingress.yaml"] = (ingress) {
-      value = (ingress.value as Listing) {
+    ["generated/ingress.yaml"] = (import("../../../../generators/apps/example/ingress.pkl")) {
+      tenants = module.tenants
+      configs {
         [[true]] {
           annotations {
             ["foo"] = "bar"
           }
         }
       }
-    }
-    ["generated/frontend.json5"] = (frontend) {
-      value = (frontend.value as Listing) {
+    }.output
+    ["generated/frontend.json5"] = (import("../../../../generators/apps/example/frontend.pkl")) {
+      tenants = module.tenants
+      configs {
         [[true]] {
           foo = "bar"
         }
       }
-    }
+    }.output
   }
 }
