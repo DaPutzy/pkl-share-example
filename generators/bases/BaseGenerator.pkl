@@ -1,0 +1,16 @@
+import "BaseTemplate.pkl"
+import "TenantConfigItem.pkl"
+
+tenants: Listing<TenantConfigItem>
+
+templates: Mapping<String, BaseTemplate>
+
+output {
+  files {
+    for (path, template in templates) {
+      [path] = (template) {
+        tenants = module.tenants
+      }.output
+    }
+  }
+}

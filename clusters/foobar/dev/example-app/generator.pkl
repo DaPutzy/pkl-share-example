@@ -1,24 +1,22 @@
-amends "../tenants.pkl"
+amends "../../../../generators/bases/BaseGenerator.pkl"
 
-output {
-  files {
-    ["generated/ingress.yaml"] = (import("../../../../generators/apps/example/ingress.pkl")) {
-      tenants = module.tenants
-      configs {
-        [[true]] {
-          annotations {
-            ["foo"] = "bar"
-          }
+tenants = import("../tenants.pkl").tenants
+
+templates {
+  ["generated/ingress.yaml"] = (import("../../../../generators/apps/example/ingress.pkl")) {
+    configs {
+      [[true]] {
+        annotations {
+          ["foo"] = "bar"
         }
       }
-    }.output
-    ["generated/frontend.json5"] = (import("../../../../generators/apps/example/frontend.pkl")) {
-      tenants = module.tenants
-      configs {
-        [[true]] {
-          foo = "bar"
-        }
+    }
+  }
+  ["generated/frontend.json5"] = (import("../../../../generators/apps/example/frontend.pkl")) {
+    configs {
+      [[true]] {
+        foo = "bar"
       }
-    }.output
+    }
   }
 }
