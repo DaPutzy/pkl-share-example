@@ -1,0 +1,6 @@
+amends "../tenants.pkl"
+
+templates {
+  ["generated/ingress.yaml"] = import("../../../generators/apps/frontend-app/IngressTemplate.pkl")
+  ["generated/frontend.json5"] = import("../../../generators/apps/frontend-app/FrontendConfigTemplate.pkl")
+}
