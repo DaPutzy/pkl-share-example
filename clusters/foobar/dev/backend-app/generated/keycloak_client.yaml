@@ -1,0 +1,28 @@
+####################################################################################
+# ⚠️ THIS IS A GENERATED FILE ⚠️
+# DO NOT MAKE MANUAL CHANGES
+####################################################################################
+
+apiVersion: keycloak.org/v1alpha1
+kind: SimplifiedKeycloakClientForThisExampleProject
+name: different-app-keycloak-client-tenant-1
+realm: tenant-1-realm
+clientId: different-app-cloud
+redirectUris:
+- http://localhost:3333
+---
+apiVersion: keycloak.org/v1alpha1
+kind: SimplifiedKeycloakClientForThisExampleProject
+name: different-app-keycloak-client-tenant-2
+realm: tenant-2-realm
+clientId: different-app-cloud
+redirectUris:
+- http://localhost:3333
+---
+apiVersion: keycloak.org/v1alpha1
+kind: SimplifiedKeycloakClientForThisExampleProject
+name: different-app-keycloak-client-tenant-3
+realm: tenant-3-realm
+clientId: different-app-cloud
+redirectUris:
+- http://localhost:3333
