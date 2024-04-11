@@ -1,7 +1,7 @@
 amends "../tenants.pkl"
 
 templates {
-  ["generated/ingress.yaml"] = (import("../../../generators/apps/frontend-app/IngressTemplate.pkl")) {
+  ["generated/ingress.yaml"] = (import("../../../templating/apps/frontend-app/IngressTemplate.pkl")) {
     configs {
       [[true]] {
         annotations {
@@ -10,7 +10,7 @@ templates {
       }
     }
   }
-  ["generated/frontend.json5"] = (import("../../../generators/apps/frontend-app/FrontendConfigTemplate.pkl")) {
+  ["generated/frontend.json5"] = (import("../../../templating/apps/frontend-app/FrontendConfigTemplate.pkl")) {
     configs {
       [[true]] {
         foo = "bar"

@@ -1,8 +1,8 @@
 amends "../tenants.pkl"
 
 templates {
-  ["generated/backend.yaml"] = import("../../../generators/apps/backend-app/BackendConfigTemplate.pkl")
-  ["generated/keycloak_client.yaml"] = (import("../../../generators/apps/backend-app/KeycloakClientTemplate.pkl")) {
+  ["generated/backend.yaml"] = import("../../../templating/apps/backend-app/BackendConfigTemplate.pkl")
+  ["generated/keycloak_client.yaml"] = (import("../../../templating/apps/backend-app/KeycloakClientTemplate.pkl")) {
     configs {
       [[true]] {
         redirectUris = new Listing {
