@@ -3,7 +3,6 @@ amends "../../../generators/bases/TenantConfig.pkl"
 import "../../../generators/bases/TenantConfigItem.pkl"
 
 tenants {
-
   new TenantConfigItem {
     name = "tenant-1"
     example {
@@ -13,17 +12,12 @@ tenants {
 
   new TenantConfigItem {
     name = "tenant-2"
+    example {
+      domain = "example.tenant-2.dev.foo"
+    }
   }
 
   new TenantConfigItem {
     name = "tenant-3"
-    example {
-      domain = "example.tenant-3.dev.bar"
-      secret = "custom-tenant-3-tls-secret"
-    }
   }
-}
-
-output {
-  value = tenants.toList()
 }

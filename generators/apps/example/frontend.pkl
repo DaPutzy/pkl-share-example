@@ -1,0 +1,18 @@
+amends "../../bases/BaseTemplate.pkl"
+
+configs = new Listing {
+  for (tenant in tenants) {
+    when (tenant.example != null) {
+      new {
+        domainName = tenant.example.domain
+      }
+    }
+  }
+}
+
+output {
+  value = configs
+  renderer = new JsonRenderer {
+    extension = "json5"
+  }
+}

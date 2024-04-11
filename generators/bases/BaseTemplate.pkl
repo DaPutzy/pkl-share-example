@@ -2,4 +2,28 @@ import "TenantConfigItem.pkl"
 
 tenants: Listing<TenantConfigItem> = new Listing<TenantConfigItem> {}
 
-configs = null
+configs: Any
+
+local warningYaml = """
+  ####################################################################################
+  # ⚠️ THIS IS A GENERATED FILE ⚠️
+  # DO NOT MAKE MANUAL CHANGES
+  ####################################################################################
+
+
+  """
+
+local warningJson5 = """
+  /*
+    ⚠️ THIS IS A GENERATED FILE ⚠️
+    DO NOT MAKE MANUAL CHANGES
+  */
+
+
+  """
+
+output {
+  text = if (renderer.extension == "yaml") warningYaml + super.text else
+         if (renderer.extension == "json5") warningJson5 + super.text else
+         super.text
+}

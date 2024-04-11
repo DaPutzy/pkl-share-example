@@ -1,3 +1,8 @@
+####################################################################################
+# ⚠️ THIS IS A GENERATED FILE ⚠️
+# DO NOT MAKE MANUAL CHANGES
+####################################################################################
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -39,7 +44,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/tls-acme: 'false'
+    kubernetes.io/tls-acme: 'true'
     ingress.kubernetes.io/ssl-redirect: 'true'
     nginx.ingress.kubernetes.io/app-root: /ui/
     nginx.ingress.kubernetes.io/rewrite-target: /$1
@@ -47,10 +52,10 @@ metadata:
   labels:
     app.kubernetes.io/name: example
     app.kubernetes.io/instance: example
-  name: example-tenant-3
+  name: example-tenant-2
 spec:
   rules:
-  - host: example.tenant-3.dev.bar
+  - host: example.tenant-2.dev.foo
     http:
       paths:
       - path: /rest/?(.*)
@@ -68,6 +73,6 @@ spec:
             name: example-ui
         pathType: Prefix
   tls:
-  - secretName: custom-tenant-3-tls-secret
+  - secretName: example-tenant-2-tls-secret
     hosts:
-    - example.tenant-3.dev.bar
+    - example.tenant-2.dev.foo

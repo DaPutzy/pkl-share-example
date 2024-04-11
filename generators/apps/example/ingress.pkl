@@ -4,8 +4,6 @@ import "@k8s/K8sResource.pkl"
 import "@k8s/apimachinery/pkg/apis/meta/v1/ObjectMeta.pkl"
 import "@k8s/api/networking/v1/Ingress.pkl"
 
-tenants {}
-
 local metadataDefaults: ObjectMeta = new {
   annotations {
     ["kubernetes.io/tls-acme"] = "true"
@@ -48,7 +46,7 @@ local httpTemplateDefault: Ingress.HTTPIngressRuleValue = new {
   }
 }
 
-configs = new Listing {
+configs = new Listing<Ingress> {
   for (tenant in tenants) {
     when (tenant.example != null) {
       new Ingress {

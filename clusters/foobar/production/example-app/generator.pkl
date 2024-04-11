@@ -1,10 +1,12 @@
-import "../../../../generators/bases/DefaultGenerator.pkl"
+amends "../tenants.pkl"
 
 output {
   files {
-    ["generated/ingress.yaml"] = DefaultGenerator.generate(
-      import("../../../../generators/apps/example/ingress.pkl"),
-      import("../tenants.pkl")
-    )
+    ["generated/ingress.yaml"] = (import("../../../../generators/apps/example/ingress.pkl")) {
+      tenants = module.tenants
+    }.output
+    ["generated/frontend.json5"] = (import("../../../../generators/apps/example/frontend.pkl")) {
+      tenants = module.tenants
+    }.output
   }
 }

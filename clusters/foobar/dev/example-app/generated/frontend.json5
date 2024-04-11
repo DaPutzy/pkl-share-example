@@ -1,0 +1,15 @@
+/*
+  ⚠️ THIS IS A GENERATED FILE ⚠️
+  DO NOT MAKE MANUAL CHANGES
+*/
+
+[
+  {
+    "domainName": "example.tenant-1.dev.foo",
+    "foo": "bar"
+  },
+  {
+    "domainName": "example.tenant-2.dev.foo",
+    "foo": "bar"
+  }
+]
