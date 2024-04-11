@@ -1,0 +1,8 @@
+amends "../../../../generators/bases/BaseGenerator.pkl"
+
+tenants = import("../tenants.pkl").tenants
+
+templates {
+  ["generated/backend.yaml"] = import("../../../../generators/apps/backend-app/BackendConfigTemplate.pkl")
+  ["generated/keycloak_client.yaml"] = import("../../../../generators/apps/backend-app/KeycloakClientTemplate.pkl")
+}

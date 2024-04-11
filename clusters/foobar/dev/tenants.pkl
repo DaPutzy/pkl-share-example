@@ -5,14 +5,14 @@ import "../../../generators/bases/TenantConfigItem.pkl"
 tenants {
   new TenantConfigItem {
     name = "tenant-1"
-    example {
+    frontend {
       domain = "example.tenant-1.dev.foo"
     }
   }
 
   new TenantConfigItem {
     name = "tenant-2"
-    example {
+    frontend {
       domain = "example.tenant-2.dev.foo"
     }
   }

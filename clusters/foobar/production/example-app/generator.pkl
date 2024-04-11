@@ -1,8 +1,0 @@
-amends "../../../../generators/bases/BaseGenerator.pkl"
-
-tenants = import("../tenants.pkl").tenants
-
-templates {
-  ["generated/ingress.yaml"] = import("../../../../generators/apps/example/ingress.pkl")
-  ["generated/frontend.json5"] = import("../../../../generators/apps/example/frontend.pkl")
-}

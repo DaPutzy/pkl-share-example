@@ -2,9 +2,9 @@ amends "../../bases/BaseTemplate.pkl"
 
 configs = new Listing {
   for (tenant in tenants) {
-    when (tenant.example != null) {
+    when (tenant.frontend != null) {
       new {
-        domainName = tenant.example.domain
+        domainName = tenant.frontend.domain
       }
     }
   }

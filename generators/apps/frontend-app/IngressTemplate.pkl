@@ -2,16 +2,16 @@ amends "../../bases/BaseTemplate.pkl"
 
 configs = new Listing {
   for (tenant in tenants) {
-    when (tenant.example != null) {
+    when (tenant.frontend != null) {
       new {
         apiVersion = "networking.k8s.io/v1"
         kind = "SimplifiedIngressForThisExampleProject"
         name = "example-app-ingress-" + tenant.name
         annotations {
-          ["kubernetes.io/tls-acme"] = if (tenant.example.useAcme()) "true" else "false"
+          ["kubernetes.io/tls-acme"] = if (tenant.frontend.useAcme()) "true" else "false"
         }
-        hosts = tenant.example.domain
-        secretName = tenant.example.getCertOrDefault("example-" + tenant.name + "-tls-secret")
+        hosts = tenant.frontend.domain
+        secretName = tenant.frontend.getCertOrDefault("example-" + tenant.name + "-tls-secret")
       }
     }
   }

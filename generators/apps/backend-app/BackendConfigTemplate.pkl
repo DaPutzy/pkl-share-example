@@ -1,0 +1,24 @@
+amends "../../bases/BaseTemplate.pkl"
+
+configs = new Mapping {
+  ["openapi"] {
+    cloud {
+      clients {
+        new Listing {
+          for (tenant in module.tenants) {
+            new {
+              realm = tenant.name
+              accessTokenUri = "https://foo.com/auths/" + tenant.name + "/oidc"
+              clientId = "different-app-cloud"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+output {
+  value = configs
+  renderer = new YamlRenderer {}
+}

@@ -1,0 +1,17 @@
+####################################################################################
+# ⚠️ THIS IS A GENERATED FILE ⚠️
+# DO NOT MAKE MANUAL CHANGES
+####################################################################################
+
+openapi:
+  cloud:
+    clients:
+    - - realm: tenant-1
+        accessTokenUri: https://foo.com/auths/tenant-1/oidc
+        clientId: different-app-cloud
+      - realm: tenant-2
+        accessTokenUri: https://foo.com/auths/tenant-2/oidc
+        clientId: different-app-cloud
+      - realm: tenant-3
+        accessTokenUri: https://foo.com/auths/tenant-3/oidc
+        clientId: different-app-cloud

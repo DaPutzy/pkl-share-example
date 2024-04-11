@@ -5,7 +5,7 @@ import "../../../generators/bases/TenantConfigItem.pkl"
 tenants {
   new TenantConfigItem {
     name = "tenant-1"
-    example {
+    frontend {
       domain = "example.tenant-1.foo"
     }
   }
@@ -16,7 +16,7 @@ tenants {
 
   new TenantConfigItem {
     name = "tenant-3"
-    example {
+    frontend {
       domain = "example.tenant-3.bar"
       secret = "custom-tenant-3-tls-secret"
     }

@@ -1,8 +1,8 @@
 // name of the tenant
 name: String
 
-// example app configuration
-example: ApplicationConfig?
+// frontend app configuration
+frontend: ApplicationConfig?
 
 class ApplicationConfig {
 

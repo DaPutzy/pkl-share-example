@@ -3,7 +3,7 @@ amends "../../../../generators/bases/BaseGenerator.pkl"
 tenants = import("../tenants.pkl").tenants
 
 templates {
-  ["generated/ingress.yaml"] = (import("../../../../generators/apps/example/ingress.pkl")) {
+  ["generated/ingress.yaml"] = (import("../../../../generators/apps/frontend-app/IngressTemplate.pkl")) {
     configs {
       [[true]] {
         annotations {
@@ -12,7 +12,7 @@ templates {
       }
     }
   }
-  ["generated/frontend.json5"] = (import("../../../../generators/apps/example/frontend.pkl")) {
+  ["generated/frontend.json5"] = (import("../../../../generators/apps/frontend-app/FrontendConfigTemplate.pkl")) {
     configs {
       [[true]] {
         foo = "bar"
