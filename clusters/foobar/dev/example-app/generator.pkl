@@ -14,10 +14,8 @@ output {
       value = new Listing {
         for (v in ingress.value as Listing) {
           (v) {
-            metadata {
-              annotations {
-                ["foo"] = "bar"
-              }
+            annotations {
+              ["foo"] = "bar"
             }
           }
         }
