@@ -1,7 +1,5 @@
 amends "../tenants.pkl"
 
-import "@k8s/api/networking/v1/Ingress.pkl"
-
 local ingress: ModuleOutput = (import("../../../../generators/apps/example/ingress.pkl")) {
   tenants = module.tenants
 }.output
@@ -14,7 +12,7 @@ output {
   files {
     ["generated/ingress.yaml"] = (ingress) {
       value = new Listing {
-        for (v in ingress.value as Listing<Ingress>) {
+        for (v in ingress.value as Listing) {
           (v) {
             metadata {
               annotations {
