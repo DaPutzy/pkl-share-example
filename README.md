@@ -23,5 +23,5 @@ Run `generate.sh` script:
 │   │   ├── <app>             <-- contains pkl base modules of an app
 │   └── bases                 <-- contains pkl base modules
 ├── generate.pkl              <-- generates all configs
-├── generate.sh               <-- wrapper to run generate.pkl using a docker image
+└── generate.sh               <-- wrapper to run generate.pkl using a docker image
 ```
