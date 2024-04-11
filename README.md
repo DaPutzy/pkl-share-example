@@ -1,6 +1,6 @@
 # Example pkl k8s deployment repository
 
-## How to
+## How to generate
 
 Run `generate.sh` script:
 
