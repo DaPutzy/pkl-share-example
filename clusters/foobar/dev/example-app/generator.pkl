@@ -11,22 +11,18 @@ local frontend: ModuleOutput = (import("../../../../generators/apps/example/fron
 output {
   files {
     ["generated/ingress.yaml"] = (ingress) {
-      value = new Listing {
-        for (v in ingress.value as Listing) {
-          (v) {
-            annotations {
-              ["foo"] = "bar"
-            }
+      value = (ingress.value as Listing) {
+        [[true]] {
+          annotations {
+            ["foo"] = "bar"
           }
         }
       }
     }
     ["generated/frontend.json5"] = (frontend) {
-      value = new Listing {
-        for (v in frontend.value as Listing) {
-          (v) {
-            foo = "bar"
-          }
+      value = (frontend.value as Listing) {
+        [[true]] {
+          foo = "bar"
         }
       }
     }
