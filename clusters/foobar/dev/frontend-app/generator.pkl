@@ -1,6 +1,4 @@
-amends "../../../../generators/bases/BaseGenerator.pkl"
-
-tenants = import("../tenants.pkl").tenants
+amends "../tenants.pkl"
 
 templates {
   ["generated/ingress.yaml"] = (import("../../../../generators/apps/frontend-app/IngressTemplate.pkl")) {

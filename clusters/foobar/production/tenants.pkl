@@ -1,4 +1,4 @@
-amends "../../../generators/bases/TenantConfig.pkl"
+amends "../../../generators/bases/BaseGenerator.pkl"
 
 import "../../../generators/bases/TenantConfigItem.pkl"
 

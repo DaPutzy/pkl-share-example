@@ -1,7 +1,7 @@
 import "BaseTemplate.pkl"
 import "TenantConfigItem.pkl"
 
-tenants: Listing<TenantConfigItem>
+tenants: Listing<TenantConfigItem>(length > 0) = new Listing<TenantConfigItem> {}
 
 templates: Mapping<String, BaseTemplate>
 
