@@ -16,11 +16,11 @@ Run `generate.sh` script:
 │   ├── <cluster>
 │   │   ├── <app>
 │   │   │   ├── generated     <-- contains the generated configs
-│   │   │   └── generator.pkl <-- configures which files should be generated
-│   │   └── tenants.pkl       <-- all tenant configuration for the stage/cluster
+│   │   │   └── generator.pkl <-- configures which and how configs should be generated
+│   │   └── tenants.pkl       <-- tenant configuration for the stage/cluster
 ├── templating
 │   ├── apps
-│   │   └── <app>             <-- contains pkl base modules of an app
+│   │   └── <app>             <-- contains base templates of an app
 │   └── bases                 <-- contains pkl base modules
 ├── generate.pkl              <-- generates all configs
 └── generate.sh               <-- wrapper to run generate.pkl using a docker image
