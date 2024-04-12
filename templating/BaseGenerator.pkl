@@ -2,12 +2,12 @@ import "apps/TenantConfig.pkl"
 
 tenants: Listing<TenantConfig.Item>(length > 0)
 
-templates: Mapping<String, TenantConfig>
+templates: Listing<TenantConfig>(isDistinctBy((it) -> it.getClass()))
 
 output {
   files {
-    for (path, template in templates) {
-      [path] = (template) {
+    for (template in templates) {
+      ["generated/\(template.filename).\(template.output.renderer.extension)"] = (template) {
         tenants = module.tenants
       }.output
     }

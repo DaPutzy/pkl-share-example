@@ -2,6 +2,8 @@ extends ".../TenantConfig.pkl"
 
 redirectUris: Listing<Uri>?
 
+fixed filename: "keycloak_client"
+
 output {
   value = new Listing {
     for (tenant in module.tenants) {

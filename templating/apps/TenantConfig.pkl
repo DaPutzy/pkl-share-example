@@ -1,4 +1,4 @@
-open module TenantConfig
+abstract module TenantConfig
 
 class Item {
   // name of the tenant
@@ -22,6 +22,8 @@ class ApplicationConfig {
 }
 
 tenants: Listing<Item>
+
+abstract fixed filename: String(!contains("/"))
 
 output {
   local warning = new Mapping {

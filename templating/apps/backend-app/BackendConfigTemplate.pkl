@@ -1,5 +1,7 @@
 extends ".../TenantConfig.pkl"
 
+fixed filename: "backend"
+
 output {
   value = new Dynamic {
     openapi {

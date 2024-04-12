@@ -4,12 +4,12 @@ import "../../../templating/apps/frontend-app/IngressTemplate.pkl"
 import "../../../templating/apps/frontend-app/FrontendConfigTemplate.pkl"
 
 templates {
-  ["generated/ingress.yaml"] = new IngressTemplate {
+  new IngressTemplate {
     annotations {
       ["foo"] = "bar"
     }
   }
-  ["generated/frontend.json5"] = new FrontendConfigTemplate {
+  new FrontendConfigTemplate {
     foo = "bar"
   }
 }

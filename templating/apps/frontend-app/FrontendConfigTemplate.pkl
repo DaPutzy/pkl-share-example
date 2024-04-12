@@ -2,6 +2,8 @@ extends ".../TenantConfig.pkl"
 
 foo: String?
 
+fixed filename: "frontend"
+
 output {
   value = new Listing {
     for (tenant in module.tenants) {
