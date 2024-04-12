@@ -1,9 +1,9 @@
-import ".../templating/apps/BaseTemplate.pkl"
+import ".../templating/apps/TenantConfig.pkl"
 import ".../templating/apps/TenantConfigItem.pkl"
 
 tenants: Listing<TenantConfigItem>(length > 0) = new Listing<TenantConfigItem> {}
 
-templates: Mapping<String, BaseTemplate>
+templates: Mapping<String, TenantConfig>
 
 output {
   files {

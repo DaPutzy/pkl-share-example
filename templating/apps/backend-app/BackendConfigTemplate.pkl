@@ -1,4 +1,4 @@
-amends ".../BaseTemplate.pkl"
+amends ".../TenantConfig.pkl"
 
 configs = new Mapping {
   ["openapi"] {
