@@ -1,7 +1,5 @@
 extends ".../Feature.pkl"
 
-fixed filename: "backend"
-
 output {
   value = new Dynamic {
     openapi {

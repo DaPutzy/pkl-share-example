@@ -2,8 +2,6 @@ extends ".../Feature.pkl"
 
 annotations: Mapping<String, String>
 
-fixed filename: "ingress"
-
 output {
   value = new Listing {
     for (tenant in module.tenants) {

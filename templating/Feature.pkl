@@ -1,5 +1,7 @@
 abstract module Feature
 
+import "pkl:reflect"
+
 class Tenant {
   // name of the tenant
   name: String
@@ -23,7 +25,11 @@ class ApplicationConfig {
 
 tenants: Listing<Tenant>
 
-abstract fixed filename: String(!contains("/"))
+fixed filename: String(!contains("/")) = reflect.moduleOf(module)
+  .name
+  .replaceAllMapped(Regex("[A-Z]"), (match) ->
+    "\(if (match.start == 0) "" else "_")\(match.value.toLowerCase())"
+  )
 
 output {
   local warning = new Mapping {
