@@ -1,6 +1,6 @@
 amends "../../templating/bases/BaseGenerator.pkl"
 
-import "../../templating/bases/TenantConfigItem.pkl"
+import "../../templating/apps/TenantConfigItem.pkl"
 
 tenants {
   new TenantConfigItem {

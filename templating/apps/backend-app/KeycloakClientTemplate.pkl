@@ -1,4 +1,4 @@
-amends "../../bases/BaseTemplate.pkl"
+amends ".../BaseTemplate.pkl"
 
 configs = new Listing {
   for (tenant in tenants) {

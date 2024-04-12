@@ -1,5 +1,5 @@
-import "BaseTemplate.pkl"
-import "TenantConfigItem.pkl"
+import ".../templating/apps/BaseTemplate.pkl"
+import ".../templating/apps/TenantConfigItem.pkl"
 
 tenants: Listing<TenantConfigItem>(length > 0) = new Listing<TenantConfigItem> {}
 
