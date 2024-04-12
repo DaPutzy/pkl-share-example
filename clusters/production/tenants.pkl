@@ -1,19 +1,15 @@
 amends "../../templating/App.pkl"
 
 tenants {
-  new {
-    name = "tenant-1"
+  ["tenant-1"] {
     frontend {
       domain = "example.tenant-1.foo"
     }
   }
 
-  new {
-    name = "tenant-2"
-  }
+  ["tenant-2"] {}
 
-  new {
-    name = "tenant-3"
+  ["tenant-3"] {
     frontend {
       domain = "example.tenant-3.bar"
       secret = "custom-tenant-3-tls-secret"
