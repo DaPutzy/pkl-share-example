@@ -1,7 +1,7 @@
 output {
   files {
     for (generatorPath, generatorOutput in import*("clusters/**/generator.pkl")) {
-      for (fileTarget, fileOutput in generatorOutput.output.files.toMap()) {
+      for (fileTarget, fileOutput in generatorOutput.output.files!!) {
         [generatorPath.replaceLast("/generator.pkl", "/" + fileTarget)] = fileOutput
       }
     }
