@@ -1,4 +1,4 @@
-import ".../templating/apps/TenantConfig.pkl"
+import "apps/TenantConfig.pkl"
 
 tenants: Listing<TenantConfig.Item>(length > 0)
 
