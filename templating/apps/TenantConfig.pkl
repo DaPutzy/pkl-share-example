@@ -17,9 +17,6 @@ class ApplicationConfig {
 
   // returns true if no custom secret is configured
   function useAcme(): Boolean = secret == null
-
-  // returns custom secret or default if secret is null
-  function getCertOrDefault(default: String): String = if (secret == null) default else secret
 }
 
 tenants: Listing<Item>

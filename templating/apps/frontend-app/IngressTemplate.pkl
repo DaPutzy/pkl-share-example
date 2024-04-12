@@ -11,7 +11,7 @@ configs = new Listing {
           ["kubernetes.io/tls-acme"] = if (tenant.frontend.useAcme()) "true" else "false"
         }
         hosts = tenant.frontend.domain
-        secretName = tenant.frontend.getCertOrDefault("example-" + tenant.name + "-tls-secret")
+        secretName = tenant.frontend.secret ?? "example-\(tenant.name)-tls-secret"
       }
     }
   }
