@@ -1,6 +1,28 @@
-import "TenantConfigItem.pkl"
+class Item {
+  // name of the tenant
+  name: String
 
-tenants: Listing<TenantConfigItem> = new Listing<TenantConfigItem> {}
+  // frontend app configuration
+  frontend: ApplicationConfig?
+}
+
+class ApplicationConfig {
+
+  // domain of the application
+  domain: String
+
+  // custom secret name of the application
+  // this will disable acme!
+  secret: String?
+
+  // returns true if no custom secret is configured
+  function useAcme(): Boolean = secret == null
+
+  // returns custom secret or default if secret is null
+  function getCertOrDefault(default: String): String = if (secret == null) default else secret
+}
+
+tenants: Listing<Item> = new Listing<Item> {}
 
 configs: Object
 
