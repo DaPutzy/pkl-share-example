@@ -1,17 +1,20 @@
-amends ".../TenantConfig.pkl"
+extends ".../TenantConfig.pkl"
 
-configs = new Listing {
-  for (tenant in tenants) {
-    when (tenant.frontend != null) {
-      new {
-        domainName = tenant.frontend.domain
+foo: String?
+
+output {
+  value = new Listing {
+    for (tenant in module.tenants) {
+      when (tenant.frontend != null) {
+        new {
+          domainName = tenant.frontend.domain
+          when (module.foo != null) {
+            foo = module.foo
+          }
+        }
       }
     }
   }
-}
-
-output {
-  value = configs
   renderer = new JsonRenderer {
     extension = "json5"
   }

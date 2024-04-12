@@ -1,3 +1,5 @@
+open module TenantConfig
+
 class Item {
   // name of the tenant
   name: String
@@ -20,8 +22,6 @@ class ApplicationConfig {
 }
 
 tenants: Listing<Item>
-
-configs: Object
 
 output {
   local warning = new Mapping {

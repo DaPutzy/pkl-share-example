@@ -1,22 +1,20 @@
-amends ".../TenantConfig.pkl"
+extends ".../TenantConfig.pkl"
 
-configs = new Mapping {
-  ["openapi"] {
-    cloud {
-      clients {
-        for (tenant in module.tenants) {
-          new {
-            realm = tenant.name
-            accessTokenUri = "https://foo.com/auths/" + tenant.name + "/oidc"
-            clientId = "different-app-cloud"
+output {
+  value = new Dynamic {
+    openapi {
+      cloud {
+        clients {
+          for (tenant in module.tenants) {
+            new {
+              realm = tenant.name
+              accessTokenUri = "https://foo.com/auths/\(tenant.name)/oidc"
+              clientId = "different-app-cloud"
+            }
           }
         }
       }
     }
   }
-}
-
-output {
-  value = configs
   renderer = new YamlRenderer {}
 }

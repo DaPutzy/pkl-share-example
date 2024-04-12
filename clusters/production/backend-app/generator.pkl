@@ -1,6 +1,9 @@
 amends "../tenants.pkl"
 
+import "../../../templating/apps/backend-app/KeycloakClientTemplate.pkl"
+import "../../../templating/apps/backend-app/BackendConfigTemplate.pkl"
+
 templates {
-  ["generated/backend.yaml"] = import("../../../templating/apps/backend-app/BackendConfigTemplate.pkl")
-  ["generated/keycloak_client.yaml"] = import("../../../templating/apps/backend-app/KeycloakClientTemplate.pkl")
+  ["generated/backend.yaml"] = new BackendConfigTemplate {}
+  ["generated/keycloak_client.yaml"] = new KeycloakClientTemplate {}
 }

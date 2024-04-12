@@ -1,19 +1,22 @@
-amends ".../TenantConfig.pkl"
+extends ".../TenantConfig.pkl"
 
-configs = new Listing {
-  for (tenant in tenants) {
-    new {
-      apiVersion = "keycloak.org/v1alpha1"
-      kind = "SimplifiedKeycloakClientForThisExampleProject"
-      name = "different-app-keycloak-client-" + tenant.name
-      realm = tenant.name + "-realm"
-      clientId = "different-app-cloud"
-    }
-  }
-}
+redirectUris: Listing<Uri>?
 
 output {
-  value = configs
+  value = new Listing {
+    for (tenant in module.tenants) {
+      new {
+        apiVersion = "keycloak.org/v1alpha1"
+        kind = "SimplifiedKeycloakClientForThisExampleProject"
+        name = "different-app-keycloak-client-" + tenant.name
+        realm = tenant.name + "-realm"
+        clientId = "different-app-cloud"
+        when (redirectUris != null) {
+          redirectUris = module.redirectUris
+        }
+      }
+    }
+  }
   renderer = new YamlRenderer {
     isStream = true
   }

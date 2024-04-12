@@ -1,20 +1,15 @@
 amends "../tenants.pkl"
 
+import "../../../templating/apps/frontend-app/IngressTemplate.pkl"
+import "../../../templating/apps/frontend-app/FrontendConfigTemplate.pkl"
+
 templates {
-  ["generated/ingress.yaml"] = (import("../../../templating/apps/frontend-app/IngressTemplate.pkl")) {
-    configs {
-      [[true]] {
-        annotations {
-          ["foo"] = "bar"
-        }
-      }
+  ["generated/ingress.yaml"] = new IngressTemplate {
+    annotations {
+      ["foo"] = "bar"
     }
   }
-  ["generated/frontend.json5"] = (import("../../../templating/apps/frontend-app/FrontendConfigTemplate.pkl")) {
-    configs {
-      [[true]] {
-        foo = "bar"
-      }
-    }
+  ["generated/frontend.json5"] = new FrontendConfigTemplate {
+    foo = "bar"
   }
 }
