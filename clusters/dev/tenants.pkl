@@ -1,4 +1,4 @@
-amends "../../templating/BaseGenerator.pkl"
+amends "../../templating/App.pkl"
 
 tenants {
   new {

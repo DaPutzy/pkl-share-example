@@ -1,15 +1,15 @@
 amends "../tenants.pkl"
 
-import "../../../templating/apps/frontend-app/IngressTemplate.pkl"
-import "../../../templating/apps/frontend-app/FrontendConfigTemplate.pkl"
+import "../../../templating/frontend/Ingress.pkl"
+import "../../../templating/frontend/Frontend.pkl"
 
-templates {
-  new IngressTemplate {
+features {
+  new Ingress {
     annotations {
       ["foo"] = "bar"
     }
   }
-  new FrontendConfigTemplate {
+  new Frontend {
     foo = "bar"
   }
 }

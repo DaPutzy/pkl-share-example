@@ -1,6 +1,6 @@
-abstract module TenantConfig
+abstract module Feature
 
-class Item {
+class Tenant {
   // name of the tenant
   name: String
 
@@ -21,7 +21,7 @@ class ApplicationConfig {
   fixed useAcme: Boolean = secret == null
 }
 
-tenants: Listing<Item>
+tenants: Listing<Tenant>
 
 abstract fixed filename: String(!contains("/"))
 

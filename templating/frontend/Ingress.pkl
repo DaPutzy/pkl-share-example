@@ -1,4 +1,4 @@
-extends ".../TenantConfig.pkl"
+extends ".../Feature.pkl"
 
 annotations: Mapping<String, String>
 
