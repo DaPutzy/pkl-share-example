@@ -15,8 +15,8 @@ class ApplicationConfig {
   // this will disable acme!
   secret: String?
 
-  // returns true if no custom secret is configured
-  function useAcme(): Boolean = secret == null
+  /// Whether no custom secret is configured
+  fixed useAcme: Boolean = secret == null
 }
 
 tenants: Listing<Item>

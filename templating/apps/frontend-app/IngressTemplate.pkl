@@ -8,7 +8,7 @@ configs = new Listing {
         kind = "SimplifiedIngressForThisExampleProject"
         name = "example-app-ingress-" + tenant.name
         annotations {
-          ["kubernetes.io/tls-acme"] = if (tenant.frontend.useAcme()) "true" else "false"
+          ["kubernetes.io/tls-acme"] = "\(tenant.frontend.useAcme)"
         }
         hosts = tenant.frontend.domain
         secretName = tenant.frontend.secret ?? "example-\(tenant.name)-tls-secret"
