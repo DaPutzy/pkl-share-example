@@ -1,0 +1,21 @@
+extends ".../Feature.pkl"
+
+foo: String?
+
+output {
+  value = new Listing {
+    for (tenant in module.tenants) {
+      when (tenant.frontend != null) {
+        new {
+          domainName = tenant.frontend.domain
+          when (module.foo != null) {
+            foo = module.foo
+          }
+        }
+      }
+    }
+  }
+  renderer = new JsonRenderer {
+    extension = "json5"
+  }
+}

@@ -1,0 +1,23 @@
+import "Feature.pkl"
+
+tenants: Mapping<String,Feature.Tenant>(!isEmpty) = new {
+  default { key ->
+    name = key
+  }
+}
+
+features: Listing<Feature>(isDistinctBy((it) -> it.getClass()))
+
+output {
+  files {
+    for (feature in features) {
+      ["generated/\(feature.filename).\(feature.output.renderer.extension)"] = (feature) {
+        tenants {
+          for (_, tenant in module.tenants) {
+            tenant
+          }
+        }
+      }.output
+    }
+  }
+}

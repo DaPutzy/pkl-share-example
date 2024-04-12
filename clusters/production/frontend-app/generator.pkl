@@ -1,6 +1,9 @@
 amends "../tenants.pkl"
 
-templates {
-  ["generated/ingress.yaml"] = import("../../../templating/apps/frontend-app/IngressTemplate.pkl")
-  ["generated/frontend.json5"] = import("../../../templating/apps/frontend-app/FrontendConfigTemplate.pkl")
+import "../../../templating/frontend/Ingress.pkl"
+import "../../../templating/frontend/Frontend.pkl"
+
+features {
+  new Ingress {}
+  new Frontend {}
 }

@@ -1,14 +1,13 @@
 amends "../tenants.pkl"
 
-templates {
-  ["generated/backend.yaml"] = import("../../../templating/apps/backend-app/BackendConfigTemplate.pkl")
-  ["generated/keycloak_client.yaml"] = (import("../../../templating/apps/backend-app/KeycloakClientTemplate.pkl")) {
-    configs {
-      [[true]] {
-        redirectUris = new Listing {
-          "http://localhost:3333"
-        }
-      }
+import "../../../templating/backend/KeycloakClient.pkl"
+import "../../../templating/backend/Backend.pkl"
+
+features {
+  new Backend {}
+  new KeycloakClient {
+    redirectUris = new Listing {
+      "http://localhost:3333"
     }
   }
 }

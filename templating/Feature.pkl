@@ -1,0 +1,54 @@
+abstract module Feature
+
+import "pkl:reflect"
+
+class Tenant {
+  // name of the tenant
+  name: String
+
+  // frontend app configuration
+  frontend: ApplicationConfig?
+}
+
+class ApplicationConfig {
+
+  // domain of the application
+  domain: String
+
+  // custom secret name of the application
+  // this will disable acme!
+  secret: String?
+
+  /// Whether no custom secret is configured
+  fixed useAcme: Boolean = secret == null
+}
+
+tenants: Listing<Tenant>
+
+fixed filename: String(!contains("/")) = reflect.moduleOf(module)
+  .name
+  .replaceAllMapped(Regex("[A-Z]"), (match) ->
+    "\(if (match.start == 0) "" else "_")\(match.value.toLowerCase())"
+  )
+
+output {
+  local warning = new Mapping {
+      ["yaml"] = """
+        ####################################################################################
+        # ⚠️ THIS IS A GENERATED FILE ⚠️
+        # DO NOT MAKE MANUAL CHANGES
+        ####################################################################################
+
+
+        """
+      ["json5"] = """
+        /*
+        ⚠️ THIS IS A GENERATED FILE ⚠️
+        DO NOT MAKE MANUAL CHANGES
+        */
+
+
+        """
+    }.getOrNull(renderer.extension) ?? ""
+  text = warning + super.text
+}
