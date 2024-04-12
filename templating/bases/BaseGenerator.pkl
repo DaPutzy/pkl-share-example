@@ -1,6 +1,6 @@
 import ".../templating/apps/TenantConfig.pkl"
 
-tenants: Listing<TenantConfig.Item>(length > 0) = new Listing<TenantConfig.Item> {}
+tenants: Listing<TenantConfig.Item>(length > 0)
 
 templates: Mapping<String, TenantConfig>
 

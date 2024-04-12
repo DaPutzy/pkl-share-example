@@ -1,20 +1,18 @@
 amends "../../templating/bases/BaseGenerator.pkl"
 
-import "../../templating/apps/TenantConfig.pkl"
-
 tenants {
-  new TenantConfig.Item {
+  new {
     name = "tenant-1"
     frontend {
       domain = "example.tenant-1.foo"
     }
   }
 
-  new TenantConfig.Item {
+  new {
     name = "tenant-2"
   }
 
-  new TenantConfig.Item {
+  new {
     name = "tenant-3"
     frontend {
       domain = "example.tenant-3.bar"

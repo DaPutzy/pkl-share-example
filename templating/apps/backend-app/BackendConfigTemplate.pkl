@@ -3,7 +3,7 @@ amends ".../TenantConfig.pkl"
 configs = new Mapping {
   ["openapi"] {
     cloud {
-      clients = new Listing {
+      clients {
         for (tenant in module.tenants) {
           new {
             realm = tenant.name

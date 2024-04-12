@@ -22,7 +22,7 @@ class ApplicationConfig {
   function getCertOrDefault(default: String): String = if (secret == null) default else secret
 }
 
-tenants: Listing<Item> = new Listing<Item> {}
+tenants: Listing<Item>
 
 configs: Object
 
